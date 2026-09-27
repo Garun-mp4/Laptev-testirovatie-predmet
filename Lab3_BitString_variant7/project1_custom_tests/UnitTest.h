@@ -59,6 +59,11 @@ public:
 
     virtual void run() = 0; // запуск тестов определит наследник
 
+    bool allPassed() const noexcept
+    {
+        return failed_ == 0U; // позволяет main() вернуть ненулевой код при ошибках
+    }
+
     void report() const
     {
         std::cout << "-----\n"; // разделитель

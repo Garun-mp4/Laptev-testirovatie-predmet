@@ -45,7 +45,13 @@ void runSelfChecks()
 
     const BitString a("A"); // 1010 - две единицы
     const BitString b("3"); // 0011 - тоже две единицы
+    const BitString c("7"); // три единицы
     assert(a == b); // сравнение идет по числу единичных битов
+    assert(!(a != b)); // проверяем оператор !=
+    assert(a <= b && a >= b); // проверяем сравнения с равным числом единиц
+    assert(a != c); // проверяем неравенство по числу единиц
+    assert(a < c && c > a); // проверяем строгие сравнения
+    assert(c >= a && a <= c); // проверяем нестрогие сравнения
     assert(!a.sameBits(b)); // сами битовые строки при этом разные
 
     const BitString andResult = BitString("F0") & BitString("3C"); // 0x30

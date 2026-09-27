@@ -12,6 +12,9 @@ add_executable(lab3_custom # исполняемый файл
 
 target_include_directories(lab3_custom PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}) # наши .h
 
+enable_testing() # разрешаем запуск собственного набора через CTest
+add_test(NAME BitStringCustomTests COMMAND lab3_custom) # код завершения отражает результат тестов
+
 if(MSVC) # Visual C++
     target_compile_options(lab3_custom PRIVATE /W4) # предупреждения
 else() # GCC/Clang

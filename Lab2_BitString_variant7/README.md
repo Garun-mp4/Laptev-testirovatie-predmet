@@ -12,9 +12,11 @@ g++ -std=c++14 -Wall -Wextra -Wpedantic main.cpp BitString.cpp -o lab2
 ## Запуск через CMake
 
 ```bash
-cmake -S . -B build
-cmake --build build
-./build/lab2
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --config Debug
+ctest --test-dir build -C Debug --output-on-failure
 ```
 
-На Windows после сборки путь к программе может быть `build/Debug/lab2.exe` или `build/Release/lab2.exe`.
+CTest запускает программу с набором проверок `assert()`. Они остаются включенными также в конфигурации Release.
+
+Для многоконфигурационных генераторов CMake (например, Visual Studio) параметр `-C Debug` указывает конфигурацию теста. Чтобы просто посмотреть демонстрационный вывод, можно отдельно запустить `build/Debug/lab2.exe` на Windows или `build/lab2` в Linux/MinGW; у других конфигураций имя каталога будет соответственно `Release`.

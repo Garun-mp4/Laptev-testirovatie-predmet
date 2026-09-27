@@ -9,13 +9,7 @@
 ```bash
 cmake -S . -B build
 cmake --build build
-./build/lab3_doctest
-```
-
-Дополнительно можно запустить тест через CTest:
-
-```bash
 ctest --test-dir build --output-on-failure
 ```
 
-В GitHub Codespaces достаточно открыть папку проекта в терминале и выполнить эти команды.
+CTest возвращает ошибку сборки, если тесты doctest не прошли. В GitHub Codespaces достаточно открыть папку проекта в терминале и выполнить эти команды.

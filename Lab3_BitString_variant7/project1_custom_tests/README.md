@@ -14,5 +14,7 @@ g++ -std=c++14 -Wall -Wextra -Wpedantic main.cpp BitString.cpp -o lab3_custom
 ```bash
 cmake -S . -B build
 cmake --build build
-./build/lab3_custom
+ctest --test-dir build --output-on-failure
 ```
+
+Тестовый запуск выводит счетчики Passed/Failed и завершается с кодом 1, если хотя бы одна проверка провалилась.

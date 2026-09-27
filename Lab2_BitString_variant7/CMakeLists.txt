@@ -12,8 +12,11 @@ add_executable(lab2 # создаем исполняемый файл
 
 target_include_directories(lab2 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}) # путь к заголовку
 
+enable_testing() # разрешаем запуск самопроверок через CTest
+add_test(NAME Lab2SelfChecks COMMAND lab2) # проверяем программу при помощи встроенных assert()
+
 if(MSVC) # настройки Visual C++
-    target_compile_options(lab2 PRIVATE /W4) # высокий уровень предупреждений
+    target_compile_options(lab2 PRIVATE /W4 /UNDEBUG) # предупреждения; assert() оставляем активным и в Release
 else() # настройки GCC и Clang
-    target_compile_options(lab2 PRIVATE -Wall -Wextra -Wpedantic) # включаем предупреждения
+    target_compile_options(lab2 PRIVATE -Wall -Wextra -Wpedantic -UNDEBUG) # предупреждения; assert() оставляем активным и в Release
 endif()
